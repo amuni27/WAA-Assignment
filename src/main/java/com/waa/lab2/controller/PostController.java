@@ -1,6 +1,7 @@
 package com.waa.lab2.controller;
 
 
+import com.waa.lab2.domain.Comment;
 import com.waa.lab2.domain.Post;
 import com.waa.lab2.dto.PostDTO;
 import com.waa.lab2.service.PostService;
@@ -37,5 +38,15 @@ public class PostController {
     public ResponseEntity<List<Post>> getAllPost() {
         List<Post> postList = postService.getAllPost();
         return new ResponseEntity<>(postList, HttpStatus.OK);
+    }
+
+    @GetMapping("/posts")
+    public ResponseEntity<?> findPostByTitle(@RequestParam("post_title") String post_title){
+        return new ResponseEntity<>(postService.findPostByTitle(post_title),HttpStatus.ACCEPTED);
+    }
+
+    @PostMapping("/comment/{post_id}")
+    public ResponseEntity<?> addComment(@PathVariable("post_id") Long postId, @RequestBody Comment comment){
+        return new ResponseEntity<>(postService.addComment(postId,comment),HttpStatus.OK);
     }
 }

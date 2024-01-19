@@ -15,12 +15,5 @@ public class CommentService {
     @Autowired
     PostRepository postRepository;
 
-    public Post addComment(Long post_id, String comments) {
-        Post post = postRepository.findById(post_id).get();
-        Comment comment = new Comment();
-        comment.setName(comments);
-        post.getComments().add(comment);
-        postRepository.save(post);
-        return post;
-    }
+
 }

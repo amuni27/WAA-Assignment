@@ -37,8 +37,13 @@ public class UserService {
         }
         return null;
     }
+
     public User getPostsByUserId(long userId) {
-        return userRepository.findById(userId).orElseThrow(()-> new EntityNotFoundException("User not found with id: " + userId));
+        return userRepository.findById(userId).orElseThrow(() -> new EntityNotFoundException("User not found with id: " + userId));
+    }
+
+    public List<User> findUsersWithMoreThanNPosts(Integer postCount) {
+        return userRepository.findUsersWithMoreThanNPosts(postCount);
     }
 
     public List<User> getAll() {

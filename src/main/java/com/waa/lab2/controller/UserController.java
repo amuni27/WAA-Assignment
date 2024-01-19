@@ -31,6 +31,10 @@ public class UserController {
     public ResponseEntity<?> getUserPost(@PathVariable("id") Long id){
         return new ResponseEntity<>(userService.getPostsByUserId(id).getPosts(),HttpStatus.ACCEPTED);
     }
+    @GetMapping("/posts")
+    public ResponseEntity<?> findUsersWithMoreThanNPosts(@RequestParam("numberPost") Integer numberPost){
+        return new ResponseEntity<>(userService.findUsersWithMoreThanNPosts(numberPost),HttpStatus.ACCEPTED);
+    }
 
     @PostMapping
     public ResponseEntity<?> save(@RequestBody User user){
