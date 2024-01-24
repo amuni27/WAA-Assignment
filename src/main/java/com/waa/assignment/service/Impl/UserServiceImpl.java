@@ -27,6 +27,10 @@ public class UserServiceImpl implements UserService {
         return user.orElse(null);
     }
 
+    public User findByName(String username) {
+        return userRepository.findByName(username);
+    }
+
     public User save(User user) {
         return userRepository.save(user);
     }

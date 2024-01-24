@@ -13,4 +13,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("SELECT u FROM User u INNER JOIN u.posts p GROUP BY u HAVING COUNT(p) > :postCount")
     List<User> findUsersWithMoreThanNPosts(@Param("postCount") Integer count);
+
+    User findByName(String name);
 }

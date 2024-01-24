@@ -10,6 +10,7 @@ public interface UserService {
      List<User> getAllUsers() ;
      User getUserById(Long id) ;
      User save(User user) ;
+     public User findByName(String username);
      List<Post> getPostByUserId(Long id);
      List<User> findUsersWithMoreThanNPosts(Integer postCount);
 }
